@@ -25,12 +25,15 @@ instance Dado Aluno where
 
     cadastrar = do
         putStr "Informe o código: "
+        hFlush stdout
         codStr <- getLine
 
         putStr "Informe o nome: "
+        hFlush stdout
         nome <- getLine
 
         putStr "Informe o email: "
+        hFlush stdout
         email <- getLine
 
         let aluno = Aluno (read codStr) nome email
@@ -81,6 +84,7 @@ instance Dado Aluno where
         putStrLn "3. Apagar"
         putStrLn "4. Voltar"
         putStr   "Digite uma opção: "
+        hFlush stdout
         resp <- getLine
         case reads resp of
             [(n, "")] | n >= 1 && n <= 4 -> return n

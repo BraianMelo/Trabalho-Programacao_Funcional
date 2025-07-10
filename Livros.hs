@@ -24,12 +24,15 @@ instance Dado Livro where
 
     cadastrar = do
         putStr "Informe o registro: "
+        hFlush stdout
         registroStr <- getLine
 
         putStr "Informe o título: "
+        hFlush stdout
         titulo <- getLine
 
         putStr "Informe a edição: "
+        hFlush stdout
         edicaoStr <- getLine
 
         let livro = (Livro (read registroStr) titulo (read edicaoStr))
@@ -81,6 +84,7 @@ instance Dado Livro where
         putStrLn "3. Apagar"
         putStrLn "4. Voltar"
         putStr   "Digite uma opção: "
+        hFlush stdout
         resp <- getLine
         case reads resp of
             [(n, "")] | n >= 1 && n <= 4 -> return n

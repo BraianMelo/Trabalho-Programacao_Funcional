@@ -17,6 +17,7 @@ menuPrincipal = do
     putStrLn "3. Menu Empréstimo"
     putStrLn "4. Sair"
     putStr "Digite uma opção: "
+    hFlush stdout
     opcao <- getLine
     
     case opcao of
@@ -54,6 +55,7 @@ menuAluno = do
         3 -> do
             putStrLn "\n=== Apagar Aluno ==="
             putStr "Informe o código do aluno a ser removido: "
+            hFlush stdout
             codStr <- getLine
             let codigoAluno = read codStr
             aluno <- buscar codigoAluno :: IO (Maybe Aluno)
@@ -89,6 +91,7 @@ menuLivro = do
         3 -> do
             putStrLn "\n=== Apagar Livro ==="
             putStr "Informe o registro do livro a ser removido: "
+            hFlush stdout
             regStr <- getLine
             let registroLivro = read regStr
             livro <- buscar registroLivro :: IO (Maybe Livro)
@@ -124,6 +127,7 @@ menuEmprestimo = do
         3 -> do
             putStrLn "\n=== Apagar Empréstimo ==="
             putStr "Informe o número do empréstimo a ser removido: "
+            hFlush stdout
             numStr <- getLine
             resultado <- apagar (read numStr) :: IO (Maybe Emprestimo)
             case resultado of

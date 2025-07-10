@@ -27,10 +27,12 @@ instance Dado Emprestimo where
 
     cadastrar = do
         putStr "Informe o número do empréstimo: "
+        hFlush stdout
         numeroStr <- getLine
 
         putStrLn "\n-- Informe o código do aluno --"
         putStr "Código do aluno: "
+        hFlush stdout
         codigoAlunoStr <- getLine
         let codigoAluno = read codigoAlunoStr
         maybeAluno <- Alunos.buscar codigoAluno
@@ -42,6 +44,7 @@ instance Dado Emprestimo where
             Just aluno -> do
                 putStrLn "\n-- Informe o registro do livro --"
                 putStr "Registro do livro: "
+                hFlush stdout
                 registroLivroStr <- getLine
                 let registroLivro = read registroLivroStr
                 maybeLivro <- Livros.buscar registroLivro
@@ -117,6 +120,7 @@ instance Dado Emprestimo where
         putStrLn "3. Apagar"
         putStrLn "4. Voltar"
         putStr   "Digite uma opção: "
+        hFlush stdout
         resp <- getLine
         case reads resp of
             [(n, "")] | n >= 1 && n <= 4 -> return n

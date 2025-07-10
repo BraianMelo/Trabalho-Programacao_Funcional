@@ -1,5 +1,7 @@
 module Util where
 
+import System.IO (hFlush, stdout)
+
 data Data = 
     Data {dia :: Int, mes :: Int, ano :: Int}
     deriving (Eq, Show, Read)
@@ -11,12 +13,15 @@ dataStr (Data dia mes ano) = formatar dia ++ "/" ++ formatar mes ++"/"++ show an
 cadastrarData :: IO Data
 cadastrarData = do
   putStr $ "Informe o dia: "
+  hFlush stdout
   diaStr <- getLine
 
   putStr $ "Informe o mês: "
+  hFlush stdout
   mesStr <- getLine
 
   putStr $ "Informe o ano: "
+  hFlush stdout
   anoStr <- getLine
   return (Data (read diaStr) (read mesStr) (read anoStr))
 
